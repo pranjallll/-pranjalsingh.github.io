@@ -1,6 +1,6 @@
-# -pranjalsingh.github.io
+ 
 
-# Data Science and Anayltics
+# Data Science and Analytics
 
 
 
