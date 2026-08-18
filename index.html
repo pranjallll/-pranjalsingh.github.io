@@ -17,7 +17,34 @@
             color: #0366d6;
             border-bottom: 2px solid #eaecef;
             padding-bottom: 10px;
+            margin-top: 0;
         }
+        
+        /* Header & Profile Photo Styles */
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0366d6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        /* Mobile responsiveness for header */
+        @media (max-width: 600px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
         h2 {
             color: #1b1f23;
             margin-top: 30px;
@@ -53,13 +80,17 @@
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <h1>Pranjal Singh</h1>
-        <p>
-            Creative and driven individual with hands-on project experience in data storytelling and insight generation. 
-            Passionate about uncovering patterns and applying data-driven solutions to real-world problems.
-        </p>
+    <!-- Header Section with Image -->
+    <header class="header-container">
+        <!-- Change 'profile.jpg' to match your exact image filename in VS Code -->
+        <img src="profile.jpg" alt="Pranjal Singh" class="profile-photo">
+        <div>
+            <h1>Pranjal Singh</h1>
+            <p>
+                Creative and driven individual with hands-on project experience in data storytelling and insight generation. 
+                Passionate about uncovering patterns and applying data-driven solutions to real-world problems.
+            </p>
+        </div>
     </header>
 
     <!-- Projects Section -->
@@ -93,7 +124,7 @@
         <div class="contact-links">
             <p>
                 <a href="https://github.com/pranjallll" target="_blank">GitHub Profile</a> | 
-                <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/pranjal-singh-here?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LinkedIn</a>
             </p>
         </div>
     </section>
