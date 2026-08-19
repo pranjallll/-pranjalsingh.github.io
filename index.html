@@ -3,129 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranjal Singh | Data Science & Analytics Portfolio</title>
+    <title>Pranjal Singh | Analytics & Data Science Portfolio</title>
     <style>
+        :root {
+            /* Light Theme Palette */
+            --bg-color: #f8fafc;
+            --text-color: #334155;
+            --text-heading: #0f172a;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --primary: #ed1b2f; /* McGill Crimson Accent */
+            --primary-hover: #b91c1c;
+            --accent-blue: #2563eb;
+            --badge-tech-bg: #eff6ff;
+            --badge-tech-text: #1d4ed8;
+            --badge-lang-bg: #f0fdf4;
+            --badge-lang-text: #15803d;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        body.dark-mode {
+            /* Dark Theme Palette */
+            --bg-color: #0b0f19;
+            --text-color: #94a3b8;
+            --text-heading: #f8fafc;
+            --card-bg: #111827;
+            --card-border: #1f2937;
+            --primary: #f87171;
+            --primary-hover: #ef4444;
+            --accent-blue: #60a5fa;
+            --badge-tech-bg: #1e3a8a30;
+            --badge-tech-text: #93c5fd;
+            --badge-lang-bg: #14532d30;
+            --badge-lang-text: #86efac;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+            --header-gradient: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            color: #24292e;
-            max-width: 850px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            max-width: 920px;
             margin: 0 auto;
             padding: 40px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        h1 {
-            color: #0366d6;
-            border-bottom: 2px solid #eaecef;
-            padding-bottom: 10px;
-            margin-top: 0;
+
+        /* Top Bar & Theme Toggle */
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 24px;
         }
-        
-        /* Header & Profile Photo Styles */
-        .header-container {
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-heading);
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.88rem;
+            box-shadow: var(--shadow);
+            transition: all 0.25s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        /* Header Card with Gradient */
+        .header-card {
+            background: var(--header-gradient);
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 36px;
             display: flex;
             align-items: center;
-            gap: 24px;
-            margin-bottom: 30px;
+            gap: 28px;
+            box-shadow: var(--shadow-hover);
+            margin-bottom: 35px;
+            position: relative;
+            overflow: hidden;
         }
+
+        .header-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(237, 27, 47, 0.15) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
         .profile-photo {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #0366d6;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             flex-shrink: 0;
+            transition: transform 0.3s ease;
         }
 
-        /* Mobile responsiveness for header */
-        @media (max-width: 600px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
+        .profile-photo:hover {
+            transform: scale(1.04);
         }
 
+        .header-info h1 {
+            color: #ffffff;
+            margin: 0 0 6px 0;
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .header-subtitle {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            background: #ffffff;
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 12px;
+        }
+
+        .header-info p {
+            margin: 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Typography & Section Headings */
         h2 {
-            color: #1b1f23;
-            margin-top: 30px;
-            border-bottom: 1px solid #eaecef;
-            padding-bottom: 8px;
-        }
-        h3 {
-            color: #24292e;
-            margin-bottom: 5px;
-        }
-        .project-card {
-            background: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            border-radius: 6px;
-            padding: 20px;
+            color: var(--text-heading);
+            margin-top: 40px;
             margin-bottom: 20px;
+            font-size: 1.45rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        h2::after {
+            content: '';
+            flex-grow: 1;
+            height: 2px;
+            background: var(--card-border);
+            margin-left: 10px;
+        }
+
+        h3 {
+            color: var(--text-heading);
+            margin-top: 0;
+            margin-bottom: 4px;
+            font-size: 1.15rem;
+        }
+
+        .role-title {
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 2px;
+            font-size: 0.95rem;
+        }
+
+        .date-location {
+            font-size: 0.85rem;
+            opacity: 0.75;
+            margin-bottom: 12px;
+        }
+
+        /* Cards */
+        .project-card, .exp-card, .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.25s ease;
+        }
+
+        .project-card:hover, .exp-card:hover, .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-blue);
+        }
+
+        /* Tags / Badges */
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .tag {
+            background-color: var(--badge-tech-bg);
+            color: var(--badge-tech-text);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .tag-lang {
+            background-color: var(--badge-lang-bg);
+            color: var(--badge-lang-text);
+        }
+
+        /* Lists & Links */
         ul {
             padding-left: 20px;
+            margin-bottom: 0;
         }
+
+        li {
+            margin-bottom: 6px;
+        }
+
         a {
-            color: #0366d6;
+            color: var(--accent-blue);
             text-decoration: none;
+            font-weight: 600;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border-radius: 8px;
+            background-color: var(--primary);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 6px rgba(237, 27, 47, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            text-decoration: none;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
         .contact-links {
-            margin-top: 20px;
-            font-weight: bold;
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        @media (max-width: 650px) {
+            .header-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 24px;
+            }
+
+            .header-card::before {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section with Image -->
-    <header class="header-container">
-        <!-- Change 'profile.jpg' to match your exact image filename in VS Code -->
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+    </div>
+
+    <!-- Enhanced Header -->
+    <header class="header-card">
         <img src="profile.jpg" alt="Pranjal Singh" class="profile-photo">
-        <div>
+        <div class="header-info">
             <h1>Pranjal Singh</h1>
+            <div class="header-subtitle">McGill University – MMA Candidate</div>
             <p>
-                Creative and driven individual with hands-on project experience in data storytelling and insight generation. 
-                Passionate about uncovering patterns and applying data-driven solutions to real-world problems.
+                Analytics professional with a background in Industrial Chemistry and experience spanning business analysis, project management, and social impact[cite: 1]. Driven by data storytelling, market research, and predictive modeling to guide strategic decision-making[cite: 1].
             </p>
         </div>
     </header>
 
-    <!-- Projects Section -->
+    <!-- Career Goals Section -->
     <section>
-        <h2>Data Science & Analytics Projects</h2>
+        <h2>🎯 Career Goals</h2>
+        <div class="info-card">
+            <p>
+                My aim is to bridge analytical rigor with strategic vision in roles across <strong>Data Science, Business Analytics, Research, and Social Impact</strong>[cite: 1].
+            </p>
+            <p style="margin-bottom: 0;">
+                Whether accelerating growth in dynamic industries, advancing Educational Technology (EdTech), or optimizing social sector interventions, I focus on transforming complex datasets into actionable insights that create measurable impact[cite: 1].
+            </p>
+        </div>
+    </section>
 
-        <div class="project-card">
-            <h3>🎬 Movie Recommender System</h3>
-            <p>Developed an interactive web application to provide personalized movie recommendations based on title, director, or actor search.</p>
+    <!-- Education Section -->
+    <section>
+        <h2>🎓 Education</h2>
+
+        <div class="exp-card">
+            <h3>Master of Management in Analytics (MMA)</h3>
+            <div class="role-title">McGill University – Desautels Faculty of Management[cite: 1]</div>
+            <div class="date-location">Montreal, Canada</div>
+        </div>
+
+        <div class="exp-card">
+            <h3>BSc in Industrial Chemistry[cite: 1]</h3>
+            <div class="role-title">University of Delhi[cite: 1]</div>
+            <div class="date-location">Delhi, India | Graduated 2022[cite: 1]</div>
+        </div>
+    </section>
+
+    <!-- Skills & Languages Section -->
+    <section>
+        <h2>🛠️ Core Competencies & Languages</h2>
+        <div class="info-card">
+            <h3>Areas of Expertise</h3>
+            <div class="tag-container">
+                <span class="tag">Business Analytics[cite: 1]</span>
+                <span class="tag">Data Storytelling</span>
+                <span class="tag">Market Research[cite: 1]</span>
+                <span class="tag">Competitor Analysis[cite: 1]</span>
+                <span class="tag">Project Management[cite: 1]</span>
+                <span class="tag">Python</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Predictive Modeling</span>
+            </div>
+            
+            <h3 style="margin-top: 16px;">Languages</h3>
+            <div class="tag-container">
+                <span class="tag tag-lang">English (Fluent)[cite: 1]</span>
+                <span class="tag tag-lang">Hindi (Native)[cite: 1]</span>
+                <span class="tag tag-lang">French (Working)[cite: 1]</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience Section -->
+    <section>
+        <h2>💼 Professional Experience</h2>
+
+        <div class="exp-card">
+            <h3>Business Analyst Intern[cite: 1]</h3>
+            <div class="role-title">Aara Play[cite: 1]</div>
+            <div class="date-location">Delhi, India | Dec 2025 – Apr 2026[cite: 1]</div>
             <ul>
-                <li>Implemented content-based filtering with precomputed similarity matrices to deliver top-5 recommendations in real time.</li>
-                <li>Integrated TMDb API to dynamically fetch movie posters, enhancing user experience.</li>
-                <li>Designed and deployed an intuitive Streamlit front-end with selection menus and multi-column layout.</li>
-                <li>Processed and filtered metadata using Pandas for accurate matching.</li>
+                <li>Analyzed business data to identify untapped growth opportunities and support client market expansion strategies[cite: 1].</li>
+                <li>Conducted thorough market research, competitor benchmarking, and industry trend assessments to derive actionable insights[cite: 1].</li>
+                <li>Supported executive decision-making through data-driven recommendations and business analysis[cite: 1].</li>
             </ul>
         </div>
 
-        <div class="project-card">
-            <h3>🐔 Chicken Disease Image Classification</h3>
-            <p>A deep learning application using a trained Convolutional Neural Network (CNN) to classify chicken health conditions from images.</p>
+        <div class="exp-card">
+            <h3>Project Management Intern[cite: 1]</h3>
+            <div class="role-title">Vision Rescue[cite: 1]</div>
+            <div class="date-location">Delhi, India | Dec 2023 – Feb 2024[cite: 1]</div>
             <ul>
-                <li>Built and fine-tuned a CNN image classifier using TensorFlow/Keras.</li>
-                <li>Deployed as an interactive web app with Flask.</li>
+                <li>Managed ongoing communications with volunteers and students, supporting engagement, placement, and program participation[cite: 1].</li>
+                <li>Coordinated community center programs and contributed to the structured rollout of new student cohorts[cite: 1].</li>
+                <li>Monitored program performance metrics and collaborated with partner teams to improve support for the local Afghan community[cite: 1].</li>
             </ul>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <!-- Connect Section -->
-<section>
-    <h2>Connect & Links</h2>
-    <div class="contact-links">
-        <p>
-            <a href="https://github.com/pranjallll" target="_blank">GitHub Profile</a> | 
-            <a href="https://www.linkedin.com/in/pranjal-singh-here/" target="_blank">LinkedIn</a>
-        </p>
-    </div>
-</section>
+    <!-- Projects Section -->
+    <section>
+        <h2>💻 Applied Analytics & Machine Learning Projects</h2>
+
+        <div class="project-card">
+            <h3>🎬 Movie Recommender System</h3>
+            <p>Interactive web application providing personalized movie recommendations based on user selections.</p>
+            <div class="tag-container">
+                <span class="tag">Python</span>
+                <span class="tag">Streamlit</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">TMDb API</span>
+                <span class="tag">Scikit-Learn</span>
+            </div>
+            <ul>
+                <li>Built content-based filtering with precomputed similarity matrices to deliver top-5 recommendations in real time.</li>
+                <li>Integrated TMDb API to dynamically fetch movie artwork, improving visual interaction.</li>
+                <li>Designed a clean, multi-column Streamlit UI for seamless search and display.</li>
+            </ul>
+            <div style="margin-top: 16px;">
+                <a href="https://github.com/pranjallll" target="_blank" class="btn">View Source Code</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>🐔 Chicken Disease Image Classification</h3>
+            <p>A computer vision deep learning app classifying poultry health conditions from images to aid agricultural operations.</p>
+            <div class="tag-container">
+                <span class="tag">TensorFlow</span>
+                <span class="tag">Keras</span>
+                <span class="tag">CNN</span>
+                <span class="tag">Flask</span>
+            </div>
+            <ul>
+                <li>Trained and evaluated a Convolutional Neural Network (CNN) classifier using TensorFlow/Keras.</li>
+                <li>Deployed as a web application with Flask to allow instant image upload and diagnostic prediction.</li>
+            </ul>
+            <div style="margin-top: 16px;">
+                <a href="https://github.com/pranjallll" target="_blank" class="btn">View Source Code</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community & Leadership Section -->
+    <section>
+        <h2>🎨 Community Impact & Interests</h2>
+        <div class="info-card">
+            <ul>
+                <li><strong>Volunteering & Education:</strong> Taught children in underserved communities through NSS and Teach for India; supported educational initiatives for Afghan women and children[cite: 1].</li>
+                <li><strong>Creative Pursuits:</strong> Create artwork in watercolor and pencil mediums, exploring portraiture and landscapes[cite: 1].</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Connect & Contact Section -->
+    <section>
+        <h2>📫 Connect & Links</h2>
+        <div class="info-card contact-links">
+            <p style="margin: 0;">
+                🤝 Let's connect! Reach out on 
+                <a href="https://github.com/pranjallll" target="_blank">GitHub</a> or 
+                <a href="https://www.linkedin.com/in/pranjal-singh-here/" target="_blank">LinkedIn</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- JavaScript for Theme Switching -->
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeBtn = document.getElementById('themeBtn');
+
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                themeBtn.textContent = '☀️ Light Mode';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeBtn.textContent = '🌙 Dark Mode';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('themeBtn').textContent = '☀️ Light Mode';
+            }
+        });
+    </script>
+</body>
+</html>
